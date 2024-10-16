@@ -4,21 +4,20 @@ import { test } from './mock/test';
 import { Result } from './components/result/result';
 import { Start } from './components/start/start';
 import { SingleChoiceQuestion } from './components/singleChoiceQuestion/singleChoiceQuestion';
+import { Questions } from './components/questions/questions';
 
 
 const Game: React.FC<GameProps> = ({ question, step, totalSteps, onClickVariant }) => {
-  const percentage = Math.round((step / totalSteps) * 100);
+  
 
   return (
     <>
       <h1>{test.title}</h1>
-      <div className="progress">
-          <div style={{ width: `${percentage}%` }} className="progress__inner"></div>
-      </div>
+      
         <Start />
-        <SingleChoiceQuestion question={question} step={0} totalSteps={0} onClickVariant={(id: number) => void {
-        throw: new Error('Function not implemented.'),
-      } }  />
+        <Questions answer={0} setAnswer={function (value: number): void {
+        throw new Error('Function not implemented.');
+      }} />
         <Result correct={0} total={0} />
     </>
   );
