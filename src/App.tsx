@@ -1,21 +1,9 @@
 import React, { useState } from 'react';
 import  { ResultProps, GameProps} from './interfaces/interfaces';
 import { test } from './mock/test';
-
-
-
-const Result: React.FC<ResultProps> = ({ correct, total }) => {
-  return (
-    <div className="result">
-      <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" alt='result' />
-      <h2>Вы отгадали {correct} ответа из {total}</h2>
-      <a href='/'>
-        <button>Попробовать снова</button>
-      </a>
-    </div>
-  );
-}
-
+import { Result } from './components/result/result';
+import { Start } from './components/start/start';
+import { SingleChoiceQuestion } from './components/singleChoiceQuestion/singleChoiceQuestion';
 
 
 const Game: React.FC<GameProps> = ({ question, step, totalSteps, onClickVariant }) => {
@@ -23,15 +11,15 @@ const Game: React.FC<GameProps> = ({ question, step, totalSteps, onClickVariant 
 
   return (
     <>
+      <h1>{test.title}</h1>
       <div className="progress">
-        <div style={{ width: `${percentage}%` }} className="progress__inner"></div>
+          <div style={{ width: `${percentage}%` }} className="progress__inner"></div>
       </div>
-      <h1>{question.questionText}</h1>
-      <ul>
-        {question.options && question.options.map((text, index) =>
-          <li onClick={() => onClickVariant(index)} key={index}>{text}</li>
-        )}
-      </ul>
+        <Start />
+        <SingleChoiceQuestion question={question} step={0} totalSteps={0} onClickVariant={(id: number) => void {
+        throw: new Error('Function not implemented.'),
+      } }  />
+        <Result correct={0} total={0} />
     </>
   );
 }
