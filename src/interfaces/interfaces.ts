@@ -1,9 +1,8 @@
-export interface Question {
+export interface QuestionProps {
     id: number;
-    variants?: string | string[];
+    options?: string[];
     questionText: string;
     type: QuestionType;
-    options?: string[];
     answer?: string | string[]; 
     correct?: number | number[];
   }
@@ -12,7 +11,7 @@ export interface Question {
     id: number;
     title: string;
     timeLimit: number;
-    questions: Question[];
+    questions: QuestionProps[];
   }
 
   export interface ResultProps {
@@ -21,10 +20,10 @@ export interface Question {
   }
 
   export interface GameProps {
-    question: Question;
+    question: QuestionProps;
     step: number;
     totalSteps: number;
-    onClickVariant: (index: number) => void;
+    onClickVariant: (id: number) => void;
   }
   
   export type QuestionType = 'singleChoice' | 'multipleChoice' | 'shortAnswer' | 'longAnswer';
