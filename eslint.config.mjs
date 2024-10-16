@@ -25,6 +25,7 @@ export default [
       'jsx-a11y/no-static-element-interactions': 0,
       'react/jsx-no-constructed-context-values': 0,
       'default-param-last': 0,
+      "react/jsx-max-props-per-line": [1, { "maximum": 2, "when": "multiline" }],
     },
   },
   pluginJs.configs.recommended,
