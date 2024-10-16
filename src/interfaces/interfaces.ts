@@ -6,6 +6,11 @@ export interface QuestionProps {
     answer?: string | string[]; 
     correct?: number | number[];
   }
+
+  export interface QuestionsProps {
+    answer: number;
+    setAnswer: (value:number) => void;
+  }
   
   export interface Test {
     id: number;
